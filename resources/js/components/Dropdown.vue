@@ -53,7 +53,7 @@ export default {
   methods: {
     switchLocale(locale) {
       Nova.request()
-        .post(`/nova-vendor/switch-locale/cache-locale`, {
+        .post(`/nova-vendor/switch-locale/save-locale`, {
           locale: locale
         })
         .then(response => {

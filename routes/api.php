@@ -13,5 +13,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/languages', 'LanguagesController@languages');
-Route::post('/cache-locale', 'LanguagesController@cacheLocale');
+Route::post('/save-locale', 'LanguagesController@saveLocale');
 Route::delete('/delete', 'LanguagesController@delete');

@@ -40,8 +40,8 @@ class SwitchLocale extends Tool
    */
   public function boot()
   {
-    $prefix = optional(auth()->user())->id;
-    Nova::provideToScript(["customDetailToolbar" => self::$customDetailToolbar, "locale" => cache()->has($prefix . ".locale") ? cache()->get($prefix . ".locale") : app()->getLocale()]);
+    $user = auth()->user();
+    Nova::provideToScript(["customDetailToolbar" => self::$customDetailToolbar, "locale" => $user && $user->locale ? $user->locale : app()->getLocale()]);
     Nova::script('switch-locale', __DIR__ . '/../dist/js/tool.js');
     Nova::style('switch-locale', __DIR__ . '/../dist/css/tool.css');
   }

@@ -25,12 +25,13 @@ class LanguagesController extends Controller
         ]);
     }
 
-    public function cacheLocale(Request $request)
+    public function saveLocale(Request $request)
     {
         $locale = $request->input("locale");
-        $prefix = optional(auth()->user())->id;
+        $user = auth()->user();
+        $user->locale = $locale;
+        $user->save();
 
-        Cache::forever($prefix.".locale", $locale);
         app()->setLocale($locale);
         return $locale;
     }
